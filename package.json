@@ -1,0 +1,52 @@
+{
+  "name": "alexandria-electron",
+  "packageManager": "yarn@3.1.0",
+  "version": "0.0.1",
+  "description": "A wrapper for Alexandria that allows printing.",
+  "main": "main.js",
+  "author": "Joe Kaufeld",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "forge-start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "escpos": "^3.0.0-alpha.6"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "electron": "^15.3.1",
+    "source-map-support": "^0.5.20"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "./assets/icon"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "alexandriaILS"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "options": {
+              "maintainer": "Joe Kaufeld",
+              "homepage": "https://alexandrialibrary.dev"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
