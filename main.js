@@ -6,12 +6,16 @@ const path = require('path')
 
 function createWindow() {
   const win = new BrowserWindow({
+    webPreferences: {
+      preload: path.join(__dirname, 'print_setup_preload.js'), // Appropriate path to the file in your own project
+    },
     width: 1440,
     height: 900,
     icon: path.join(__dirname, 'assets', 'icon.png')
   })
 
   win.loadURL('http://localhost:8000');
+  win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
@@ -22,6 +26,7 @@ app.whenReady().then(() => {
   })
 })
 
+// kill process entirely on Mac to mimic behavior on other OS'
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
