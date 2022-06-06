@@ -1,0 +1,21 @@
+<div id="theContent">
+    <div class="text-center">
+        <h1 class="text-center mb-5">All done!</h1>
+        <p class="fs-4">
+            All good to go! Click the button below to restart this app and start
+            using Alexandria!
+        </p>
+    </div>
+    <div class="row mt-5 mb-2 text-center">
+        <div class="col-1 col-md-2 col-lg-4"></div>
+        <div class="col-10 col-md-8 col-lg-4">
+            <div class="d-grid gap-2">
+                <button
+                        class="btn btn-success"
+                        id="completeSetupButton"
+                >Relaunch</button>
+            </div>
+        </div>
+        <div class="col-1 col-md-2 col-lg-4"></div>
+    </div>
+</div>

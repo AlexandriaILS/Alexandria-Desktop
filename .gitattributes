@@ -1,0 +1,2 @@
+# exclude all files under assets/vendored from Github's language statistics
+assets/vendored/** linguist-vendored

@@ -13,9 +13,12 @@
     "make": "electron-forge make"
   },
   "dependencies": {
+    "@thiagoelg/node-printer": "^0.6.2",
     "electron-squirrel-startup": "^1.0.0",
+    "htmx.org": "^1.7.0",
     "receiptio": "^1.4.0",
-    "serialport": "^10.4.0"
+    "receiptline": "^1.9.0",
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.61",
@@ -24,6 +27,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
     "electron": "^15.3.1",
+    "electron-rebuild": "^3.2.7",
     "source-map-support": "^0.5.20"
   },
   "config": {

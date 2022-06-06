@@ -1,0 +1,137 @@
+<div id="theContent">
+    <div class="text-center">
+        <h1 class="text-center mb-5">Printer Settings</h1>
+        <p class="fs-4">
+            Alexandria is configured out of the box to use an Epson TM-T88V printer.<br>If you
+            have a different type of printer, <a
+                href="https://alexandriails.github.io/Alexandria/configuration/custom_receipts/"
+                target="_blank"
+        >
+            make sure Alexandria is configured for your printer type</a>
+            on the server.
+        </p>
+    </div>
+
+    <div class="row mt-5 mb-2">
+        <div class="col-0 col-md-2 col-lg-3"></div>
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="mb-3">
+                <label for="printerSelect" class="form-label">Connected Receipt Printer</label>
+                <select class="form-select" id="printerSelect"
+                        aria-label="Select your receipt printer"
+                        aria-describedby="printerHelp"
+                >
+                    <option selected>---</option>
+                </select>
+                <div class="text-danger" id="printerSelectError" style="display: none"></div>
+                <div id="printerHelp" class="form-text">
+                    Don't see your printer? Make sure that your OS can see it and that you
+                    can print a test page to it. We only support printers added through your
+                    OS at the moment, though direct printing to network printers is coming
+                    in a future release.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="cplInput" class="form-label">Characters per line</label>
+                <input type="number" value="42" class="form-control" id="cplInput" aria-describedby="cplHelp">
+                <div class="text-danger" id="cplError" style="display: none"></div>
+                <div id="cplHelp" class="form-text">This is usually between 32 and 48.</div>
+            </div>
+            <div class="mb-3">
+                <label for="encodingInput" class="form-label">Encoding</label>
+                <select class="form-select" id="encodingInput"
+                        aria-label="Select the encoding type for your printer"
+                        aria-describedby="encodingHelp"
+                >
+                    <option value="cp437" selected>United States</option>
+                    <option value="cp852">Central European</option>
+                    <option value="cp852">Central European</option>
+                    <option value="cp858">Western European</option>
+                    <option value="cp860">Portuguese</option>
+                    <option value="cp863">French Canadian</option>
+                    <option value="cp865">Nordic</option>
+                    <option value="cp866">Cyrillic</option>
+                    <option value="cp1252">Western European</option>
+                    <option value="cp932">Japanese (cp932)</option>
+                    <option value="shiftjis">Japanese (shiftjis)</option>
+                    <option value="cp936">Simplified Chinese (cp936)</option>
+                    <option value="gb18030">Simplified Chinese (gb18030)</option>
+                    <option value="cp949">Korean (cp949)</option>
+                    <option value="ksc5601">Korean (ksc5601)</option>
+                    <option value="cp950">Traditional Chinese (cp950)</option>
+                    <option value="big5">Traditional Chinese (big5)</option>
+                    <option value="tis620">Thai</option>
+                    <option value="multilingual">Multilingual</option>
+                </select>
+                <div id="encodingHelp" class="form-text">
+                    Select the primary type of characters that this printer will be printing.
+                    When in doubt, select 'United States'.
+                </div>
+
+            </div>
+            <div class="mb-3">
+                <label for="commandInput" class="form-label">Printer Command Language</label>
+                <select class="form-select" id="commandInput"
+                        aria-label="Select the encoding type for your printer"
+                        aria-describedby="commandHelp"
+                >
+                    <option value="escpos" selected>ESC/POS (Epson)</option>
+                    <option value="sii">ESC/POS (Seiko Instruments)</option>
+                    <option value="citizen">ESC/POS (Citizen)</option>
+                    <option value="fit">ESC/POS (Fujitsu)</option>
+                    <option value="impact">ESC/POS (TM-U220)</option>
+                    <option value="impactb">ESC/POS (TM-U220 Font B)</option>
+                    <option value="starsbcs">StarPRNT (SBCS, Thai)</option>
+                    <option value="starmbcs">StarPRNT (Japanese)</option>
+                    <option value="starmbcs2">StarPRNT (Chinese, Korean)</option>
+                    <option value="starlinesbcs">Star Line Mode (SBCS)</option>
+                    <option value="starlinembcs">Star Line Mode (Japanese)</option>
+                    <option value="starlinembcs2">Star Line Mode (Chinsese, Korean)</option>
+                    <option value="emustarlinesbcs">Command Emulator Star Line Mode (SBCS)</option>
+                    <option value="emustarlinembcs">Command Emulator Star Line Mode (Japanese)</option>
+                    <option value="emustarlinembcs2">Command Emulator Star Line Mode (Chinsese, Korean)</option>
+                    <option value="stargraphic">Star Graphic Mode (TSP100LAN)</option>
+                </select>
+                <div id="commandHelp" class="form-text">
+                    Different types of printers require different ways of sending commands,
+                    so we need to know how to format the commands for this specific printer.
+                </div>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="upsideDownCheck">
+                <label class="form-check-label" for="upsideDownCheck">Print upside down?</label>
+            </div>
+        </div>
+        <div class="col-0 col-md-2 col-lg-3"></div>
+    </div>
+    <div class="row mt-5 mb-2 text-center">
+        <div class="col-1 col-md-2 col-lg-4"></div>
+        <div class="col-10 col-md-8 col-lg-4">
+            <div class="row">
+                <div class="col-4 col-md-6 col-lg-6">
+                    <div class="d-grid gap-2">
+                        <button
+                                class="btn btn-outline-primary"
+                                id="testPrintButton"
+                        >Test Settings
+                        </button>
+                    </div>
+                </div>
+                <div class="col-8 col-md-6 col-lg-6">
+                    <div class="d-grid gap-2">
+                        <button
+                                class="btn btn-success"
+                                id="printerSettingsButton"
+                                data-hx-trigger="goAhead from:body"
+                                data-hx-swap="outerHTML"
+                                data-hx-get="complete.partial"
+                                data-hx-target="#theContent"
+                        >Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 col-md-2 col-lg-4"></div>
+    </div>
+</div>

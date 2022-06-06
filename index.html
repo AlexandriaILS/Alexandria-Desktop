@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <title>Alexandria</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="./assets/vendored/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/vendored/css/material_icons.css" rel="stylesheet">
+    <script src="./assets/vendored/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="d-flex flex-column h-100" id="body">
+
+<!--tell Electron we're running in setup mode-->
+<div id="initialSetup"></div>
+
+<main class="flex-fill mb-5">
+    <div class="container flex-shrink-0 mt-3" style="height:100%; width: 100%">
+        <table style="width: 100%; height: 90%" class="mx-auto">
+            <tbody>
+            <tr>
+                <td class="align-middle">
+                    <div class="card bg-light shadow">
+                        <div class="card-body">
+                            <table style="height: 100%; width: 100%">
+                                <tbody>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div
+                                                class="text-center"
+                                                data-hx-get="welcome_page.partial"
+                                                data-hx-trigger="load"
+                                                data-hx-swap="outerHTML"
+                                        >
+                                            <div class="spinner-border my-5" style="width: 7rem; height: 7rem;"
+                                                 role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>
