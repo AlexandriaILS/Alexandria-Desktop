@@ -26,7 +26,7 @@
                         id="urlValidateButton"
                         data-hx-trigger="goAhead from:body"
                         data-hx-swap="outerHTML"
-                        data-hx-get="printer_settings.partial"
+                        data-hx-get="settings.partial"
                         data-hx-target="#theContent"
                 >Next
                 </button>

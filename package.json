@@ -1,11 +1,11 @@
 {
-  "name": "alexandria-electron",
+  "name": "alexandria-desktop",
   "packageManager": "yarn@3.1.0",
   "version": "0.0.1",
-  "description": "A wrapper for Alexandria that allows printing.",
+  "description": "Alexandria Desktop: the companion staff application for Alexandria.",
   "main": "main.js",
   "author": "Joe Kaufeld",
-  "license": "MIT",
+  "license": "AGPL",
   "scripts": {
     "start": "electron .",
     "forge-start": "electron-forge start",

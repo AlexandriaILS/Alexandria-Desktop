@@ -113,16 +113,27 @@ const template = [
 ]
 
 function createWindow(showConfig = false, settings) {
+  let is_selfcheckout;
+  if (settings !== undefined) {
+    is_selfcheckout = settings.is_selfcheckout
+  } else {
+    is_selfcheckout = false
+  }
+
   const win = new BrowserWindow({
     webPreferences: {
-      preload: path.join(__dirname, 'print_setup_preload.js'),
+      preload: path.join(__dirname, 'preload.js'),
     },
     width: 1440,
     height: 900,
-    icon: path.join(__dirname, 'assets', 'icon.png')
+    icon: path.join(__dirname, 'assets', 'icon.png'),
+    fullscreen: is_selfcheckout,
+    autoHideMenuBar: is_selfcheckout,
   })
   if (showConfig) {
     win.loadFile('index.html')
+  } else if (is_selfcheckout === true) {
+    win.loadURL(new URL("staff/selfcheckout/", settings.url).href);
   } else {
     win.loadURL(settings.url);
   }
@@ -151,7 +162,7 @@ app.whenReady().then(() => {
   createWindow(showConfig, settings)
 
   app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    if (BrowserWindow.getAllWindows().length === 0) createWindow(showConfig, settings)
   })
 })
 
@@ -201,7 +212,11 @@ ipcMain.handle("setURL", (event, newURL) => {
   global.settings.url = newURL;
 });
 
-ipcMain.handle("setPrinterSettings", (event, printerData) => {
+ipcMain.handle("setIsSelfcheckout", (event, is_selfcheckout) => {
+  global.settings.is_selfcheckout = is_selfcheckout;
+});
+
+ipcMain.handle("setSettings", (event, printerData) => {
   global.settings.printer = printerData;
 })
 
@@ -209,17 +224,3 @@ ipcMain.handle("restart", (event) => {
   app.relaunch();
   app.quit();
 })
-
-// JSON.stringify(
-//   {
-//     "printer": {
-//       "name": "",
-//       "cpl": "",
-//       "encoding": "",
-//       "upsideDown": false,
-//       "command": "escpos",
-//     },
-//     "url": 'http://localhost:8000'
-//   }
-// )
-// fs.writeFile(settingPath, json);
